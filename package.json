@@ -23,7 +23,7 @@
     "memory management",
     "diagnostics"
   ],
-  "author": "Your Name <your.email@example.com>",
+  "author": "NIkoChopikashvili",
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^29.0.0",
