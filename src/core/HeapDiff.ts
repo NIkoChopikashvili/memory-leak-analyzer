@@ -45,12 +45,35 @@ class HeapDiff {
    * @return {{ [key: string]: number }} an object containing the count of each node type
    */
   private extractNodeInfo(snapshot: any): { [key: string]: number } {
+    if (
+      !snapshot ||
+      !snapshot.nodes ||
+      !snapshot.node_fields ||
+      !snapshot.strings
+    ) {
+      throw new Error(
+        "Invalid snapshot format. Make sure the snapshot is loaded correctly."
+      );
+    }
+
     const nodes = snapshot.nodes;
     const strings = snapshot.strings;
+    const nodeFields = snapshot.node_fields;
+
+    if (
+      !Array.isArray(nodes) ||
+      !Array.isArray(strings) ||
+      !Array.isArray(nodeFields)
+    ) {
+      throw new Error(
+        "Invalid snapshot format: nodes, strings, or node_fields are not arrays."
+      );
+    }
+
     const nodeInfo: { [key: string]: number } = {};
 
-    for (let i = 0; i < nodes.length; i += snapshot.node_fields.length) {
-      const typeIndex = nodes[i + snapshot.node_fields.indexOf("type")];
+    for (let i = 0; i < nodes.length; i += nodeFields.length) {
+      const typeIndex = nodes[i + nodeFields.indexOf("type")];
       const typeName = strings[typeIndex];
       nodeInfo[typeName] = (nodeInfo[typeName] || 0) + 1;
     }
