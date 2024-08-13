@@ -11,7 +11,8 @@ class MemoryGrowthDetector {
     const currentSnapshotInfo = this.extractNodeInfo(snapshot);
 
     if (this.previousSnapshotInfo) {
-      const growth = {};
+      const growth: Record<string, any> = {};
+
       for (const [type, currentCount] of Object.entries(currentSnapshotInfo)) {
         const previousCount = this.previousSnapshotInfo[type] || 0;
         if (currentCount > previousCount) {

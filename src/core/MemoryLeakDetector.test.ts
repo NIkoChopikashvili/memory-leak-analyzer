@@ -1,4 +1,4 @@
-import MemoryLeakDetector from "../../src/core/MemoryLeakDetector";
+import MemoryLeakDetector from "../core/MemoryLeakDetector";
 import { existsSync } from "fs";
 
 describe("MemoryLeakDetector", () => {

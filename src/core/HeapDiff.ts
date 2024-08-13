@@ -10,7 +10,7 @@ class HeapDiff {
    * @return {any} an object containing the differences in node counts between the two snapshots
    */
   diffSnapshots(snapshotA: any, snapshotB: any): any {
-    const diffResult = {};
+    const diffResult: Record<string, any> = {};
 
     const nodesA = this.extractNodeInfo(snapshotA);
     const nodesB = this.extractNodeInfo(snapshotB);
