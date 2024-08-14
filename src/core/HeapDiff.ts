@@ -48,9 +48,9 @@ class HeapDiff {
     console.log("Snapshot:", snapshot);
     if (
       !snapshot ||
-      !snapshot.includes("Node") ||
-      !snapshot.includes("node_fields") ||
-      !snapshot.includes("Strings")
+      !snapshot.snapshot.meta.nodes ||
+      !snapshot.snapshot.meta.node_fields ||
+      !snapshot.snapshot.meta.strings
     ) {
       throw new Error(
         "Invalid snapshot format. Make sure the snapshot is loaded correctly."
