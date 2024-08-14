@@ -42,9 +42,10 @@ class MemoryGrowthDetector {
     const nodes = snapshot.nodes;
     const strings = snapshot.strings;
     const nodeInfo: { [key: string]: number } = {};
+    const node_fields = snapshot.snapshot.meta.node_fields;
 
-    for (let i = 0; i < nodes.length; i += snapshot.node_fields.length) {
-      const typeIndex = nodes[i + snapshot.node_fields.indexOf("type")];
+    for (let i = 0; i < nodes.length; i += node_fields.length) {
+      const typeIndex = nodes[i + node_fields.indexOf("type")];
       const typeName = strings[typeIndex];
       nodeInfo[typeName] = (nodeInfo[typeName] || 0) + 1;
     }
