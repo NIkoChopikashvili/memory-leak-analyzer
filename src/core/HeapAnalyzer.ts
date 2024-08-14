@@ -25,11 +25,12 @@ class HeapAnalyzer {
   analyzeSnapshot(snapshot: any) {
     const nodes = snapshot.nodes;
     const strings = snapshot.strings;
+    const node_fields = snapshot.snapshot.meta.node_fields;
 
     // Example: Analyzing object counts by type
     const nodeTypes: { [key: string]: number } = {};
-    for (let i = 0; i < nodes.length; i += snapshot.node_fields.length) {
-      const typeIndex = nodes[i + snapshot.node_fields.indexOf("type")];
+    for (let i = 0; i < nodes.length; i += node_fields.length) {
+      const typeIndex = nodes[i + node_fields.indexOf("type")];
       const typeName = strings[typeIndex];
       nodeTypes[typeName] = (nodeTypes[typeName] || 0) + 1;
     }
