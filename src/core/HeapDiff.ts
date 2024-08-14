@@ -45,11 +45,12 @@ class HeapDiff {
    * @return {{ [key: string]: number }} an object containing the count of each node type
    */
   private extractNodeInfo(snapshot: any): { [key: string]: number } {
+    console.log("Snapshot:", snapshot);
     if (
       !snapshot ||
-      !snapshot.nodes ||
-      !snapshot.node_fields ||
-      !snapshot.strings
+      !snapshot.includes("Node") ||
+      !snapshot.includes("node_fields") ||
+      !snapshot.includes("Strings")
     ) {
       throw new Error(
         "Invalid snapshot format. Make sure the snapshot is loaded correctly."
