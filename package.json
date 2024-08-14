@@ -1,6 +1,6 @@
 {
   "name": "memory-leak-analyzer",
-  "version": "1.1.7",
+  "version": "1.0.0",
   "description": "A Node.js library for diagnosing and fixing memory leaks in Node.js applications.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
