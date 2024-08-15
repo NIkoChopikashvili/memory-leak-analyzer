@@ -45,7 +45,6 @@ class HeapDiff {
    * @return {{ [key: string]: number }} an object containing the count of each node type
    */
   private extractNodeInfo(snapshot: any): { [key: string]: number } {
-    console.log("Snapshot:", snapshot.snapshot.meta);
     if (
       !snapshot ||
       !snapshot.nodes ||
